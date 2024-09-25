@@ -51,7 +51,7 @@ function open_thin_walled_section(x, y, t, drawing_scale, linecolor, markersize)
     Δy = abs(maximum(y) - minimum(y))
 
     # figure = Figure(resolution = (Δx*72 * drawing_scale * (Δx/Δy), Δy*72 * drawing_scale))
-    figure = Figure(resolution = (Δx*72, Δy*72) .* drawing_scale)
+    figure = Figure(size = (Δx*72, Δy*72) .* drawing_scale)
     ax = Axis(figure[1, 1], aspect = Δx/Δy)
     thickness_scale = maximum(t) * 72 * drawing_scale
     num_elem = length(x)-1
