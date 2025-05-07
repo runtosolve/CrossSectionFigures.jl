@@ -20,7 +20,7 @@ end
 
 
 
-function open_thin_walled_section(geometry, t, drawing_scale, linecolor, markersize)
+function open_thin_walled_section(geometry, t, drawing_scale, linecolor, markersize, markercolor)
 
     x = [geometry.center[i][1] for i in eachindex(geometry.center)]
     y = [geometry.center[i][2] for i in eachindex(geometry.center)]
@@ -35,14 +35,14 @@ function open_thin_walled_section(geometry, t, drawing_scale, linecolor, markers
     num_elem = length(x)-1
     # linewidths = fill(t, num_elem) ./ maximum(fill(t, num_elem)) * thickness_scale
 	linewidths = t ./ maximum(t) * thickness_scale
-    [scatterlines!(x[i:i+1], y[i:i+1], linewidth=linewidths[i], color=linecolor, markersize=markersize) for i=1:num_elem];
+    [scatterlines!(x[i:i+1], y[i:i+1], linewidth=linewidths[i], color=linecolor, markersize=markersize, markercolor=markercolor) for i=1:num_elem];
 
     return ax, figure
 
 end
 
 
-function open_thin_walled_section(x, y, t, drawing_scale, linecolor, markersize)
+function open_thin_walled_section(x, y, t, drawing_scale, linecolor, markersize, markercolor)
 
     # x = [geometry.center[i][1] for i in eachindex(geometry.center)]
     # y = [geometry.center[i][2] for i in eachindex(geometry.center)]
@@ -57,7 +57,7 @@ function open_thin_walled_section(x, y, t, drawing_scale, linecolor, markersize)
     num_elem = length(x)-1
     # linewidths = fill(t, num_elem) ./ maximum(fill(t, num_elem)) * thickness_scale
 	linewidths = t ./ maximum(t) * thickness_scale
-    [scatterlines!(x[i:i+1], y[i:i+1], linewidth=linewidths[i], color=linecolor, markersize=markersize) for i=1:num_elem];
+    [scatterlines!(x[i:i+1], y[i:i+1], linewidth=linewidths[i], color=linecolor, markersize=markersize, markercolor=markercolor) for i=1:num_elem];
 
     return ax, figure
 
